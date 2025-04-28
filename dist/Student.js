@@ -25,7 +25,7 @@ class Student {
     getSubjectMarks() {
         return this.subjectMarks;
     }
-    setName(name) {
+    publicsetName(name) {
         this.name = name;
     }
     setId(id) {

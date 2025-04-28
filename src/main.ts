@@ -9,6 +9,7 @@ import History from "./History";
 import { English } from "./English";
 import Literature from "./Literature";
 import SubjectMark from "./SubjectMark";
+import ForeignLanguage from "./ForeignLanguage";
 const math = new Mathematics();
 const physics = new Physics();
 const chemistry = new Chemistry();
@@ -42,7 +43,15 @@ student.setSubjectMarks(new Set(subjectMarks));
 const subjectMark = student.getSubjectMarks();
 
 subjectMark.forEach((mark) => {
-  console.log(mark.getSubject().getName(), mark.getMark());
+  if (mark.getSubject() instanceof ForeignLanguage) {
+    console.log(
+      mark.getSubject().getName(),
+      mark.getMark(),
+      (mark.getSubject() as ForeignLanguage).getForeignCode()
+    );
+  } else {
+    console.log(mark.getSubject().getName(), mark.getMark());
+  }
 });
 
 console.log(student.getAverageMark());

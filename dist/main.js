@@ -14,6 +14,7 @@ const History_1 = __importDefault(require("./History"));
 const English_1 = require("./English");
 const Literature_1 = __importDefault(require("./Literature"));
 const SubjectMark_1 = __importDefault(require("./SubjectMark"));
+const ForeignLanguage_1 = __importDefault(require("./ForeignLanguage"));
 const math = new Mathematics_1.default();
 const physics = new Physics_1.default();
 const chemistry = new Chemistry_1.default();
@@ -23,7 +24,6 @@ const geography = new Geography_1.Geography();
 const civics = new Civics_1.Civics();
 const english = new English_1.English();
 const literature = new Literature_1.default();
-const literature2 = new Literature_1.default();
 const student = new Student_1.default("Nguyen Nhat Phap", "1234567890");
 student.addSubject(math);
 student.addSubject(physics);
@@ -31,7 +31,6 @@ student.addSubject(chemistry);
 student.addSubject(biology);
 student.addSubject(english);
 student.addSubject(literature);
-student.addSubject(literature2);
 const subjectMarks = [
     new SubjectMark_1.default(math, 8),
     new SubjectMark_1.default(physics, 9),
@@ -43,6 +42,11 @@ const subjectMarks = [
 student.setSubjectMarks(new Set(subjectMarks));
 const subjectMark = student.getSubjectMarks();
 subjectMark.forEach((mark) => {
-    console.log(mark.getSubject().getName(), mark.getMark());
+    if (mark.getSubject() instanceof ForeignLanguage_1.default) {
+        console.log(mark.getSubject().getName(), mark.getMark(), mark.getSubject().getForeignCode());
+    }
+    else {
+        console.log(mark.getSubject().getName(), mark.getMark());
+    }
 });
 console.log(student.getAverageMark());
