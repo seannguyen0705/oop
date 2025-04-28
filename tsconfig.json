@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Phiên bản JavaScript đích
+    "module": "commonjs", // Hệ thống module
+    "outDir": "./dist", // Thư mục đầu ra cho file .js
+    "rootDir": "./src", // Thư mục chứa file .ts
+    "strict": true, // Bật kiểm tra kiểu nghiêm ngặt
+    "esModuleInterop": true, // Hỗ trợ nhập module
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
+}
