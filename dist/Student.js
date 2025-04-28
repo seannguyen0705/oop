@@ -10,7 +10,6 @@ class Student {
     constructor(name, id) {
         this.name = name;
         this.id = id;
-        this.subjects = new Set();
         this.subjectMarks = new Set();
     }
     getName() {
@@ -19,42 +18,28 @@ class Student {
     getId() {
         return this.id;
     }
-    getSubjects() {
-        return this.subjects;
-    }
     getSubjectMarks() {
         return this.subjectMarks;
     }
-    publicsetName(name) {
+    setName(name) {
         this.name = name;
     }
     setId(id) {
         this.id = id;
     }
-    setSubjects(subjects) {
-        this.subjects = subjects;
-    }
     setSubjectMarks(subjectMarks) {
         this.subjectMarks = subjectMarks;
     }
-    addSubject(subject) {
-        if (this.subjects.has(subject)) {
-            throw new Error("Subject already exists");
-        }
-        this.subjects.add(subject);
-    }
     addSubjectMark(subjectMark) {
-        if (!this.subjects.has(subjectMark.getSubject())) {
-            throw new Error("Subject does not exist");
-        }
         if (this.subjectMarks.has(subjectMark)) {
             throw new Error("Subject mark already exists");
         }
         this.subjectMarks.add(subjectMark);
     }
     getAverageMark() {
-        const totalMark = Array.from(this.subjectMarks).reduce((acc, subjectMark) => acc + subjectMark.getMark(), 0);
-        return (totalMark / this.subjectMarks.size).toFixed(2);
+        const totalMark = Array.from(this.subjectMarks).reduce((acc, subjectMark) => acc + subjectMark.getMark() * subjectMark.getSubject().getCoefficient(), 0);
+        const totalCoefficient = Array.from(this.subjectMarks).reduce((acc, subjectMark) => acc + subjectMark.getSubject().getCoefficient(), 0);
+        return (totalMark / totalCoefficient).toFixed(2);
     }
     getMathMark() {
         var _a;

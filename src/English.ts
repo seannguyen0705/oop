@@ -1,7 +1,7 @@
 import ForeignLanguage from "./ForeignLanguage";
 
 export class English extends ForeignLanguage {
-  constructor() {
-    super("English", "N1");
+  constructor(coefficient: number) {
+    super("English", "N1", coefficient);
   }
 }

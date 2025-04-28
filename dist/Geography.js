@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Geography = void 0;
 const Subject_1 = __importDefault(require("./Subject"));
 class Geography extends Subject_1.default {
-    constructor() {
-        super("Geography");
+    constructor(coefficient) {
+        super("Geography", coefficient);
     }
 }
 exports.Geography = Geography;

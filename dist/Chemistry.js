@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Subject_1 = __importDefault(require("./Subject"));
 class Chemistry extends Subject_1.default {
-    constructor() {
-        super("Chemistry");
+    constructor(coefficient) {
+        super("Chemistry", coefficient);
     }
 }
 exports.default = Chemistry;

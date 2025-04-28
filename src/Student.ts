@@ -7,12 +7,11 @@ import SubjectMark from "./SubjectMark";
 export default class Student {
   private name: string;
   private id: string;
-  private subjects: Set<Subject>; // mon hoc dang ki thi
+  // private subjects: Set<Subject>; // mon hoc dang ki thi
   private subjectMarks: Set<SubjectMark>; // diem mon hoc
   constructor(name: string, id: string) {
     this.name = name;
     this.id = id;
-    this.subjects = new Set();
     this.subjectMarks = new Set();
   }
 
@@ -24,15 +23,11 @@ export default class Student {
     return this.id;
   }
 
-  public getSubjects() {
-    return this.subjects;
-  }
-
   public getSubjectMarks() {
     return this.subjectMarks;
   }
 
-  publicsetName(name: string) {
+  public setName(name: string) {
     this.name = name;
   }
 
@@ -40,25 +35,11 @@ export default class Student {
     this.id = id;
   }
 
-  public setSubjects(subjects: Set<Subject>) {
-    this.subjects = subjects;
-  }
-
   public setSubjectMarks(subjectMarks: Set<SubjectMark>) {
     this.subjectMarks = subjectMarks;
   }
 
-  public addSubject(subject: Subject) {
-    if (this.subjects.has(subject)) {
-      throw new Error("Subject already exists");
-    }
-    this.subjects.add(subject);
-  }
-
   public addSubjectMark(subjectMark: SubjectMark) {
-    if (!this.subjects.has(subjectMark.getSubject())) {
-      throw new Error("Subject does not exist");
-    }
     if (this.subjectMarks.has(subjectMark)) {
       throw new Error("Subject mark already exists");
     }
@@ -67,11 +48,17 @@ export default class Student {
 
   public getAverageMark() {
     const totalMark = Array.from(this.subjectMarks).reduce(
-      (acc, subjectMark) => acc + subjectMark.getMark(),
+      (acc, subjectMark) =>
+        acc + subjectMark.getMark() * subjectMark.getSubject().getCoefficient(),
       0
     );
 
-    return (totalMark / this.subjectMarks.size).toFixed(2);
+    const totalCoefficient = Array.from(this.subjectMarks).reduce(
+      (acc, subjectMark) => acc + subjectMark.getSubject().getCoefficient(),
+      0
+    );
+
+    return (totalMark / totalCoefficient).toFixed(2);
   }
 
   public getMathMark() {

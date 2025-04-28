@@ -4,8 +4,12 @@ class Subject {
     getName() {
         return this.name;
     }
-    constructor(name) {
+    getCoefficient() {
+        return this.coefficient;
+    }
+    constructor(name, coefficient) {
         this.name = name;
+        this.coefficient = coefficient;
     }
 }
 exports.default = Subject;

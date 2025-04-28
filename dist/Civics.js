@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Civics = void 0;
 const Subject_1 = __importDefault(require("./Subject"));
 class Civics extends Subject_1.default {
-    constructor() {
-        super("Civics");
+    constructor(coefficient) {
+        super("Civics", coefficient);
     }
 }
 exports.Civics = Civics;

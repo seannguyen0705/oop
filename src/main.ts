@@ -10,27 +10,20 @@ import { English } from "./English";
 import Literature from "./Literature";
 import SubjectMark from "./SubjectMark";
 import ForeignLanguage from "./ForeignLanguage";
-const math = new Mathematics();
-const physics = new Physics();
-const chemistry = new Chemistry();
-const biology = new Biology();
-const history = new History();
-const geography = new Geography();
-const civics = new Civics();
-const english = new English();
-const literature = new Literature();
+const math = new Mathematics(2);
+const physics = new Physics(2);
+const chemistry = new Chemistry(1);
+const biology = new Biology(1);
+const history = new History(1);
+const geography = new Geography(1);
+const civics = new Civics(1);
+const english = new English(2);
+const literature = new Literature(1);
 
 const student = new Student("Nguyen Nhat Phap", "1234567890");
 
-student.addSubject(math);
-student.addSubject(physics);
-student.addSubject(chemistry);
-student.addSubject(biology);
-student.addSubject(english);
-student.addSubject(literature);
-
 const subjectMarks = [
-  new SubjectMark(math, 8),
+  new SubjectMark(math, 10),
   new SubjectMark(physics, 9),
   new SubjectMark(chemistry, 7),
   new SubjectMark(biology, 8),
@@ -54,4 +47,4 @@ subjectMark.forEach((mark) => {
   }
 });
 
-console.log(student.getAverageMark());
+console.log(student.getAverageMark(), "average mark");

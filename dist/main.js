@@ -15,24 +15,18 @@ const English_1 = require("./English");
 const Literature_1 = __importDefault(require("./Literature"));
 const SubjectMark_1 = __importDefault(require("./SubjectMark"));
 const ForeignLanguage_1 = __importDefault(require("./ForeignLanguage"));
-const math = new Mathematics_1.default();
-const physics = new Physics_1.default();
-const chemistry = new Chemistry_1.default();
-const biology = new Biology_1.Biology();
-const history = new History_1.default();
-const geography = new Geography_1.Geography();
-const civics = new Civics_1.Civics();
-const english = new English_1.English();
-const literature = new Literature_1.default();
+const math = new Mathematics_1.default(2);
+const physics = new Physics_1.default(2);
+const chemistry = new Chemistry_1.default(1);
+const biology = new Biology_1.Biology(1);
+const history = new History_1.default(1);
+const geography = new Geography_1.Geography(1);
+const civics = new Civics_1.Civics(1);
+const english = new English_1.English(2);
+const literature = new Literature_1.default(1);
 const student = new Student_1.default("Nguyen Nhat Phap", "1234567890");
-student.addSubject(math);
-student.addSubject(physics);
-student.addSubject(chemistry);
-student.addSubject(biology);
-student.addSubject(english);
-student.addSubject(literature);
 const subjectMarks = [
-    new SubjectMark_1.default(math, 8),
+    new SubjectMark_1.default(math, 10),
     new SubjectMark_1.default(physics, 9),
     new SubjectMark_1.default(chemistry, 7),
     new SubjectMark_1.default(biology, 8),
@@ -49,4 +43,4 @@ subjectMark.forEach((mark) => {
         console.log(mark.getSubject().getName(), mark.getMark());
     }
 });
-console.log(student.getAverageMark());
+console.log(student.getAverageMark(), "average mark");
